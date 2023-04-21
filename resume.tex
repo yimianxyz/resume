@@ -1,0 +1,187 @@
+%-------------------------
+% Resume in Latex
+% Author : Yimian Liu
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2 \vspace{-2pt}}
+  }
+}
+
+% Just in case someone needs a heading that does not need to be in a list
+\newcommand{\resumeHeading}[4]{
+    \begin{tabular*}{0.99\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING-----------------
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{\href{https://yimian.xyz/}{\Large Yimian Liu}} & Email : \href{mailto:i@yimian.xyz}{i@yimian.xyz}\\
+  \href{https://yimian.xyz/}{http://yimian.xyz} & Mobile : \href{tel:+16073915915}{+1-607-391-5915} \\
+\end{tabular*}
+
+
+%-----------EDUCATION-----------------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Cornell University}{Ithaca, NY}
+      {Master of Engineering in Electrical and Computer Engineering;  GPA: 4.08}{Aug. 2022 -- Dec. 2023}
+    \resumeSubheading
+      {University of Liverpool}{Liverpool, UK}
+      {Bachelor of Engineering in Electrical and Electronics;  GPA: 3.83 (??/100)}{Sep. 2017 -- July. 2021}
+  \resumeSubHeadingListEnd
+
+%-----------SKILLS-----------------
+\section{Skills}
+  \resumeSubHeadingListStart
+    \resumeSubItem{Languages}
+      {Python, C/C++, TypeScript/JavaScript, Java, HTML/CSS, PHP, Lua, SQL, GraphQL, Assembly}
+    \resumeSubItem{Technologies}
+      {Linux, Kubernetes, Docker, Kafka, Nginx, Git, React, ChatGPT, AWS, MySQL, ElasticSearch, MongoDB, Express, Pytorch, Node.js}
+  \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Build a Distributed, Linearizable, Sharded Key-Value Database}{Ithaca, NY}
+      {Course Project advised by Prof. Lorenzo Alvisi}{Feb 2023 - May 2023}
+      \resumeItemListStart
+        \resumeItem{Consensus Algorithm}
+          {Implement Multi-Paxos and optimized it to a Raft-like protocol to reduce the complexity.}
+        \resumeItem{Sharding and Transaction supported}
+          {Implement a sharding mechimisal }
+      \resumeItemListEnd
+      
+    \resumeSubheading
+      {Ushio - A distributed information supporting system}{Ithaca, NY}
+      {Open-Source Project}{April 2018 - Jan 2023}
+      \resumeItemListStart
+        \resumeItem{Server Cluster}
+          {Implement a 3 servers cluster running Kubenetues to }
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Full-Stack Development of Access Control System}{Ithaca, NY}
+      {Team Leader}{Nov. 2022 and Dec. 2022}
+      \resumeItemListStart
+        \resumeItem{Hardware}
+          {lmplemented an integrated access control system with Raspberry Pi, Pi camera, servo motor and PiTFT screen.}
+        \resumeItem{Front-end}
+          {Developed a web app to manage the visiting history and control the access remotely using ReactJS.}
+        \resumeItem{Back-end}
+            {Implemented RESTful APIs with Python Flask for visitor management, account authentication, log data fetching usingJSONand live video acquiration using HTTP multipart/x-mixed-replace.}
+        \resumeItem{Database}
+          {Designed a database scheme to store and retrieve the user's facial image, ID, and visiting time based on MariaDB.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Sola - A Long-running Smart Home System}{Taian, China}
+      {Open-Source Project}{Jan. 2019 - Aug. 2022}
+      \resumeItemListStart
+        \resumeItem{Server Cluster}
+          {Implement a 3 servers cluster running Kubenetues to }
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {wIoT - A Distributed IoT Operating System}{Liverpool, UK}
+      {Open-Source Project}{Jan. 2019 - Aug. 2022}
+      \resumeItemListStart
+        \resumeItem{Auto-Compiler}
+          {Compile javascript into Lua. }
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------------
+\section{Projects}
+  \resumeSubHeadingListStart
+    \resumeSubItem{fp.js}
+      {A Opensource javascript library for generating a unique identificant fingerprint for user's devices.}
+    \resumeSubItem{eee.dog}
+      {Personal blog website using Hexo embedded a comments system.}
+  \resumeSubHeadingListEnd
+
+
+%-------------------------------------------
+\end{document}
