@@ -4,7 +4,7 @@ name: default
 
 steps:
   - name: build
-    image: leplusorg/latex
+    image: leplusorg/latex@sha256:bd6b59d0946da30c04e69808faee12afbb8010ea766a11d187ec0df21c6d86a8
     commands:
       - latexmk -pdf resume.tex
       - mkdir public
