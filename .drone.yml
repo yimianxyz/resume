@@ -1,0 +1,24 @@
+kind: pipeline
+type: kubernetes
+name: default
+
+steps:
+  - name: build
+    image: leplusorg/latex
+    commands:
+      - latexmk -pdf resume.tex
+      - mkdir public
+      - mv resume.pdf public/
+
+  - name: publish  
+    image: plugins/gh-pages
+    settings:
+      pages_directory: public/
+      username:
+        from_secret: github_username
+      password:
+        from_secret: github_password
+
+trigger:
+  branch:
+  - master
