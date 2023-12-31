@@ -1,5 +1,5 @@
 # resume
-[![Build Status](https://drone.yimian.xyz/api/badges/IoTcat/resume/status.svg)](https://drone.yimian.xyz/IoTcat/resume)
+[![Build](https://github.com/IoTcat/resume/actions/workflows/build.yml/badge.svg)](https://github.com/IoTcat/resume/actions/workflows/build.yml)
 
 Yimian Liu's Resume
 
