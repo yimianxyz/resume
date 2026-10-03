@@ -1,115 +1,90 @@
 % Build: SOURCE_DATE_EPOCH=0 tectonic -X compile Yimian-Liu-Resume.tex --synctex
-% Preview: install LaTeX Workshop in VS Code or Cursor, then save this file.
-\documentclass[10pt,letterpaper]{article}
-
-\usepackage[
-  letterpaper,
-  top=0.338in,
-  bottom=0.300in,
-  left=0.500in,
-  right=0.500in
-]{geometry}
-\usepackage[sfdefault,lining]{carlito}
+\documentclass{article}
+\usepackage[margin=0.5in]{geometry}
+\usepackage[T1]{fontenc}
+\renewcommand{\familydefault}{Carlito-LF}
+% No ligatures or kerns after f; microtype's \DisableLigatures[f] is pdfTeX-only
+\XeTeXinterchartokenstate=1
+\newXeTeXintercharclass\fclass
+\XeTeXcharclass`f=\fclass
+\XeTeXinterchartoks\fclass 0={\kern0pt}
+\XeTeXinterchartoks\fclass\fclass={\kern0pt}
+\usepackage{microtype}
 \usepackage{enumitem}
 \usepackage{xcolor}
 \usepackage{hyperref}
 
-\definecolor{linkpurple}{HTML}{A00084}
+\definecolor{ink}{HTML}{161616}
+\definecolor{navy}{HTML}{152D3D}
+\definecolor{muted}{HTML}{434B52}
+\definecolor{link}{HTML}{315F78}
+\definecolor{rule}{HTML}{9DAEBB}
 \hypersetup{
-  colorlinks=true,
-  urlcolor=linkpurple,
+  colorlinks,
+  urlcolor=link,
   pdfauthor={Yimian Liu},
-  pdftitle={Yimian Liu Resume}
+  pdftitle={Yimian Liu | Research Engineering},
+  pdfsubject={Applied Machine Learning, Optimization, Energy Systems, and AI Platforms},
+  pdfkeywords={research engineering, machine learning, forecasting, constrained optimization, energy systems, AI platforms, distributed systems}
 }
 
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0pt}
-\setlength{\emergencystretch}{0pt}
 \raggedright
+\setlist{nosep, leftmargin=11bp, labelsep=4bp, topsep=2bp, itemsep=4bp, after=\endgraf\addvspace{4bp}}
 
-\newcommand{\resumesection}[1]{%
-  \vspace{4.04pt}%
-  {\fontsize{12bp}{13bp}\selectfont\bfseries #1\par}%
-  \vspace{1pt}\hrule height 0.4pt\vspace{5.675pt}%
-}
-
-\newcommand{\resumeentry}[4]{%
-  \textbf{#1}\hfill\textbf{#2}\par
-  \textit{#3}\hfill\textit{#4}\par
-}
-
-\newcommand{\project}[3]{%
-  {\fontsize{10.5bp}{13.08bp}\selectfont
-    \textbf{#1}: #2 \href{#3}{\underline{[Link]}}\par}%
-  \vspace{2.76bp}%
-}
-
-\newenvironment{resumebullets}{%
-  \begin{itemize}[
-    leftmargin=32pt,
-    labelsep=12pt,
-    topsep=0pt,
-    partopsep=0pt,
-    parsep=0pt,
-    itemsep=0pt
-  ]
-}{\end{itemize}}
+\newcommand{\sep}{\enspace|\enspace}
+\newcommand{\name}[1]{{\color{navy}\bfseries#1}}
+\newcommand{\when}[1]{\hfill{\color{muted}#1\par}}
+\newcommand{\heading}[1]{\addvspace{5.7bp}\name{#1}\par
+  \vspace{2bp}{\color{rule}\hrule}\vspace{4bp}}
 
 \begin{document}
-% Word and PDF points are exactly 1/72 inch; LaTeX calls that unit a bp.
-\fontsize{10.5bp}{13bp}\selectfont
+\fontsize{11bp}{13.3bp}\selectfont\color{ink}
 
 {\centering
-  {\fontsize{16bp}{20bp}\selectfont\bfseries Yimian Liu\par}
-  \vspace{2.5pt}
-  {\fontsize{11bp}{13bp}\selectfont
-    i@yimian.xyz \char"007C\relax{} 607-391-5915 \char"007C\relax{}
-    \href{https://yimian.xyz/}{\textcolor{black}{\underline{https://yimian.xyz/}}}\par}
-}
+\name{\fontsize{20bp}{24bp}\selectfont YIMIAN LIU}\par
+{\fontsize{10.5bp}{14bp}\selectfont\color{muted}Research Engineering | Machine Learning \& Energy System\par}
+\vspace{2bp}
+\href{mailto:i@yimian.xyz}{i@yimian.xyz}\sep 607-391-5915\sep\href{https://yimian.xyz/}{yimian.xyz}\par}
 
-\vspace{3.455pt}
-\resumesection{EDUCATION}
-\resumeentry{Cornell University}{Aug 2022 -- Dec 2023}
-  {Master of Engineering in Computer Engineering, GPA: 3.95/4.00}{Ithaca, NY}
-\textbf{Relevant coursework:} Deep Learning (A+), Computer Vision (A+), Machine Learning (A), Distributed Computing Principles, Computer Networks, Embedded Operating System, Digital Systems with Microcontrollers, UNIX Tools and Scripting\par
-\vspace{1.9pt}
-\resumeentry{University of Liverpool}{Sep 2017 -- Jul 2021}
-  {Bachelor of Engineering with Honors in Electrical and Electronic Engineering, GPA: 3.97/4.00}{Liverpool, UK}
+\heading{EXPERIENCE}
+\name{\fontsize{11.5bp}{13.3bp}\selectfont Guzman Energy}\when{Denver, CO}
+\textit{Operations Research Engineer (AI \& Platform Tech Lead)}\when{Jan 2026 -- Present}
+\begin{itemize}
+  \item Built from scratch and now operate an end-to-end SPP power-market decision platform that cleared \textbf{799 GWh} (\$26.14M market notional) in 6+ months with 99.9\% submission acceptance. Connects weather and market data to probabilistic forecasts, trader-defined strategies and asset-constrained offers and demand bids; feeds awards, dispatch and settlements back into the next decision cycle.
+  \item Reduced load/generation forecast error (MAPE) by \textbf{17\%} versus the prior vendor with a production agentic research system using WeatherNext 3/NWP and market data. Designed an autonomous research loop with immutable forecasting artifacts and predictions committed before outcomes are known; an AI Critic selects production models using only past realized evidence, while integrity-cleared research histories guide successor experiments.
+  \item Led design and delivery of \textbf{least-cost transmission pathfinding} with capacity constraints across the western network. Integrated minute-level OASIS data from 23 transmission providers (457M+ offering records) and connected optimized routes to transmission reservations and e-tags.
+  \item Built a human-in-the-loop strategy and execution engine that translates p10--p90 forecasts and asset limits into hourly offers for 20+ trader-defined strategies, with independent preflight validation, live-state drift blocking, partial-failure recovery and complete decision lineage.
+  \item Launched an enterprise AI platform serving 51 monthly active users, recording 60,663 events in 5 months. Integrated agent orchestration, BigQuery/MCP tools, user-scoped OAuth 2.0 and role-based access for governed data operations with end-to-end audit trails.
+  \item Lead a three-person engineering team while remaining heavily hands-on in ML research, optimization and production; built an AI-native, research-to-production culture with automated code review and API, testing and CI quality gates.
+\end{itemize}
+\textit{Software Engineer}\when{Oct 2024 -- Dec 2025}
+\begin{itemize}
+  \item Architected the company's unified internal AI and data platform from scratch using Python/GCP, React/TypeScript and BigQuery; team-owned pipelines account for \textbf{1.5B+ production rows}. Built CAISO/SPP battery scheduling, validated market submissions and live position monitoring across market, transmission and settlement workflows.
+\end{itemize}
+\name{Elseware Capital}\sep\textit{Full Stack Developer (Remote)}\when{Jan 2024 -- Sep 2024}
+\begin{itemize}
+  \item Reduced API response latency by 80\% under load tests simulating 1,000+ concurrent users by profiling asynchronous FastAPI endpoints and MySQL queries for a real-estate investment platform.
+\end{itemize}
+\name{Ecesis Investment}\sep\textit{Frontend Developer Intern (Part-time, Remote)}\when{Jul 2023 -- Dec 2023}
+\begin{itemize}
+  \item Built an AI transcription application; cut streaming latency by 60\% through WebSocket optimization and rendering time by 80\% through caching and state management.
+\end{itemize}
 
-\resumesection{TECHNICAL SKILLS}
-\textbf{Programming Languages:} Python, TypeScript, JavaScript, C, C++, HTML/CSS, Java, Go, Rust, SQL, Bash, Shell\par
-\textbf{Tools/Frameworks:} React, Node.js, FastAPI, PyTorch, TensorFlow, MySQL, Redis, MongoDB, TCP, gRPC, Docker, Kubernetes, Nginx, Kafka, AWS (EC2, RDS, S3, Bedrock), GCP (Cloud Run, BigQuery, Firebase, Vertex AI), Linux, Git, REST, MCP, A2A\par
-\textbf{Concepts:} Agentic AI, GenAI, LLM, RAG, OOP, Web Development, App Development, Web3, DevOps\par
+\heading{EDUCATION}
+\name{Cornell University}\sep M.Eng., Computer Engineering\when{Aug 2022 -- Dec 2023}
+GPA: 3.95/4.00. Deep Learning (A+), Machine Learning (A), Computer Vision (A+), Distributed Computing Principles.\par
+\vspace{3bp}
+\name{University of Liverpool}\sep B.Eng. (Honors), Electrical \& Electronic Engineering\when{Sep 2017 -- Jul 2021}
+GPA: 3.97/4.00. Power Systems (A+), Instrumentation/Control, Signals/Systems, Electromagnetism, Field Theory \& PDEs.
 
-\resumesection{WORK EXPERIENCE}
-\vspace{0.5pt}
-\resumeentry{Guzman Energy}{Oct 2024 -- Present}{Software Engineer}{Denver, CO}
-\begin{resumebullets}
-  \item Architect and led development of AI-Enabled Guzman Info System (AEGIS) platform, featuring a React TypeScript frontend, GCP-based microservice backend, and BigQuery data warehouse, used daily by 50+ colleagues.
-  \item Delivered 10+ production applications on AEGIS, such as Transmission Sniper, Least Cost Pathfinder, CAISO Bid, streamlining bid submission and trading strategy optimization for traders and analysts.
-  \item Built an \textbf{Agentic AI} assistant using multi-agent design, RAG, and MCP tools, enabling non-technical staff to chat with BigQuery in natural language, auto-visualize via VegaChart, and export CSV, reducing ad hoc SQL requests by 60\%.
-  \item Enhanced the Agentic AI with closed-loop output reflection, dynamic retrieval of human-curated prior knowledge, long-term memory, reducing hallucinations and improving multi-step task accuracy by 70\%.
-  \item Introduced Cursor IDE to the team, hosted weekly AI frontier paper discussions, proposed and drove adoption of OpenAPI spec, unit test, and CI/CD, fostering continuous learning and AI-first engineering culture.
-\end{resumebullets}
-\vspace{1.89pt}
-\resumeentry{Elseware Capital}{Jan 2024 -- Sep 2024}{Full Stack Developer (Remote)}{New York, NY}
-\begin{resumebullets}
-  \item Built from scratch a full-stack real estate trading web app integrated with Polymesh, supporting on-chain asset tokenization, portfolio management, KYC, and live blockchain transactions using React, FastAPI, and MySQL.
-  \item Created a responsive frontend for desktop and mobile using React and Less, incorporating Chart.js for trading data visualization, Leaflet for interactive maps, and 2FA login flows to enhance account security.
-  \item Engineered scalable, low-latency RESTful APIs in FastAPI with JWT auth, async processing, and optimized MySQL query/index, reducing response times by 80\% in load tests simulating 1,000+ concurrent users.
-\end{resumebullets}
-\vspace{1.99pt}
-\resumeentry{Ecesis Investment}{Jul 2023 -- Dec 2023}{Frontend Developer Intern (Remote) (Part-time)}{New York, NY}
-\begin{resumebullets}
-  \item Delivered cross-platform AI scribing mobile app for iOS and Android using React Native, featuring audio recording, playback, real-time transcription, and LLM summarization, collaborating closely with UI/UX and backend teams.
-  \item Reduced real-time transcription latency by 60\% via optimizing bi-directional WebSocket streaming; improved app responsiveness by implementing caching and Redux state management, reducing rendering time by 80\%.
-\end{resumebullets}
+\heading{SELECTED PROJECTS}
+\name{Transformer \& Reinforcement Learning}\enspace\href{https://yimian.xyz/}{\underline{[Demo]}}\enspace Built a Transformer policy using supervised pretraining and PPO for predator--prey simulation; distilled the policy by 40\% for <10\,ms browser inference.\par
+\vspace{3bp}
+\name{Distributed Systems}\enspace\href{https://github.com/yimianxyz/dslabs-public}{\underline{[Code]}}\enspace Implemented a sharded Java key/value store using Multi-Paxos and two-phase commit for strongly consistent cross-shard transactions.
 
-\resumesection{PROJECTS}
-\project{Transformer \& Reinforcement Learning}{Designed a Transformer model for predator control in boids simulation, pre-trained with supervised learning on rule-based data, fine-tuned using PPO reinforcement learning for emergent strategy against boids flocking dynamics, and distilled into a 40\% smaller model achieving \char"003C\relax{}10ms in-browser inference via WebAssembly.}{https://github.com/yimianxyz/BoidChase}
-\project{Machine Learning \& Deep Learning}{Fine-tuned a DenseNet121-based CNN via transfer learning to classify 9 tomato leaf diseases using the 54K-image PlantVillage dataset, achieving 99\% test accuracy and 95.1\% accuracy on external datasets, with model performance evaluated via ROC curves, precision-recall, and confusion matrices.}{https://github.com/yimianxyz/sysen6888/blob/project/SYSEN6888-Report.pdf}
-\project{DevOps \& Cloud Infrastructure}{Orchestrated a high-availability Kubernetes cluster (3 Debian servers) for containerized web services, leveraging Helm for deployment, Nginx Ingress for load balancing, Prometheus/Grafana for real-time monitoring and alerting, and a centralized ELK stack (Elasticsearch, Logstash, Kibana) for log aggregation and visualization.}{https://github.com/yimianxyz/ushio-k8s-helm-public}
-\project{Distributed System \& Database}{Developed a distributed, sharded key/value store in Java using Multi-Paxos, later optimizing it with a Raft-like consensus algorithm for improved throughput; implemented a two-phase commit protocol to ensure atomic, strongly consistent cross-shard transactions in a horizontally scalable system.}{https://github.com/yimianxyz/dslabs-public}
-
+\heading{TECHNICAL SKILLS}
+\name{ML \& Research:} Python, PyTorch, TensorFlow/Keras, Chronos 2, temporal backtesting, time-series foundation models.\par
+\name{Systems \& Data:} SQL/BigQuery, GCP, FastAPI, Airflow, Java, React/TypeScript, distributed systems, CI/CD.
 \end{document}
