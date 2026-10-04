@@ -23,9 +23,7 @@
   colorlinks,
   urlcolor=link,
   pdfauthor={Yimian Liu},
-  pdftitle={Yimian Liu | Research Engineering},
-  pdfsubject={Applied Machine Learning, Optimization, Energy Systems, and AI Platforms},
-  pdfkeywords={research engineering, machine learning, forecasting, constrained optimization, energy systems, AI platforms, distributed systems}
+  pdftitle={Yimian Liu | AI Engineering},
 }
 
 \pagestyle{empty}
@@ -44,7 +42,7 @@
 
 {\centering
 \name{\fontsize{20bp}{24bp}\selectfont YIMIAN LIU}\par
-{\fontsize{10.5bp}{14bp}\selectfont\color{muted}Research Engineering | Machine Learning \& Energy System\par}
+{\fontsize{10.5bp}{14bp}\selectfont\color{muted}AI Engineering | Machine Learning \& Trading System\par}
 \vspace{2bp}
 \href{mailto:i@yimian.xyz}{i@yimian.xyz}\sep 607-391-5915\sep\href{https://yimian.xyz/}{yimian.xyz}\par}
 
@@ -52,32 +50,48 @@
 \name{\fontsize{11.5bp}{13.3bp}\selectfont Guzman Energy}\when{Denver, CO}
 \textit{Operations Research Engineer (AI \& Platform Tech Lead)}\when{Jan 2026 -- Present}
 \begin{itemize}
-  \item Built from scratch and now operate an end-to-end SPP power-market decision platform that cleared \textbf{799 GWh} (\$26.14M market notional) in 6+ months with 99.9\% submission acceptance. Connects weather and market data to probabilistic forecasts, trader-defined strategies and asset-constrained offers and demand bids; feeds awards, dispatch and settlements back into the next decision cycle.
-  \item Reduced load/generation forecast error (MAPE) by \textbf{17\%} versus the prior vendor with a production agentic research system using WeatherNext 3/NWP and market data. Designed an autonomous research loop with immutable forecasting artifacts and predictions committed before outcomes are known; an AI Critic selects production models using only past realized evidence, while integrity-cleared research histories guide successor experiments.
-  \item Led design and delivery of \textbf{least-cost transmission pathfinding} with capacity constraints across the western network. Integrated minute-level OASIS data from 23 transmission providers (457M+ offering records) and connected optimized routes to transmission reservations and e-tags.
-  \item Built a human-in-the-loop strategy and execution engine that translates p10--p90 forecasts and asset limits into hourly offers for 20+ trader-defined strategies, with independent preflight validation, live-state drift blocking, partial-failure recovery and complete decision lineage.
-  \item Launched an enterprise AI platform serving 51 monthly active users, recording 60,663 events in 5 months. Integrated agent orchestration, BigQuery/MCP tools, user-scoped OAuth 2.0 and role-based access for governed data operations with end-to-end audit trails.
-  \item Lead a three-person engineering team while remaining heavily hands-on in ML research, optimization and production; built an AI-native, research-to-production culture with automated code review and API, testing and CI quality gates.
+  \item Led a three-person AI-native team build Guzman's core internal trading, AI and data platform from scratch in under two years: 32+ production apps, 71\% of employees active weekly, \$1M daily trading volume, and 5B+ system events per day.  
+
+  \item Architected, built and owned a fully-automated production SPP trading system that integrates forecast with an innotivative trader-in-the-loop formula-based strategy design, submitted \$1.2M+ daily with 99.9\%+ market submission acceptance rate for 6+ months since launch.
+
+  \item Designed and built an agentic Auto-research system for load/generation forecasting, where agents explore freely with simulation and publish immutable candidate models, AI critic selects production output based on realized performance, and successors inherit experiments, evidence, and trajectories, reducing MAE by 17\% versus the prior vendor.
+
+  \item Proposed and led the adoption of Claude as the company's self-serve analysis and automation layer, growing weekly active usage from 0-82\% of employees; led delivery of a unified MCP connector exposing internal/external data and APIs that make Claude really useful, with role based access control and audit logging for data governance.
+  
+  \item Grew monthly MCP events 36x in four months by using AI agents to identify user pain points from audit logs, rapidly resolving user blockers, leading cross-department onboarding, and hosting biweekly company-wide AI Office Hours.
+
+  \item Initiated and led delivery of multiple AI agentic systems, notably: a security scanner that found 6 critical vulnerabilities, including one in a third-party vendor system; a data anomaly and human-error detection system that helped traders proactively avoid \$100K+ in losses; an RFP finder that helped Commercial surface a real opportunity in its first month.
+  
+  \item Empowered all three team members to achieve 6x traditional engineering productivity by building an AI-native, self-driven, research-to-production culture: encouraging end-to-end ownership, close end-user engagement, engineer-led innovation; hosting weekly AI research seminars; and automating code review, testing, and CI/CD.
+
 \end{itemize}
 \textit{Software Engineer}\when{Oct 2024 -- Dec 2025}
 \begin{itemize}
-  \item Architected the company's unified internal AI and data platform from scratch using Python/GCP, React/TypeScript and BigQuery; team-owned pipelines account for \textbf{1.5B+ production rows}. Built CAISO/SPP battery scheduling, validated market submissions and live position monitoring across market, transmission and settlement workflows.
+  \item Architected and built the platform foundation from scratch using Python/GCP, React/TypeScript, and BigQuery; team-owned data pipelines span 1.5B+ production rows; delivering core apps including trading submissions, AI data marketplace, position, settlement \& risk management, resource planning map, ticket \& notification system.
+
 \end{itemize}
 \name{Elseware Capital}\sep\textit{Full Stack Developer (Remote)}\when{Jan 2024 -- Sep 2024}
 \begin{itemize}
-  \item Reduced API response latency by 80\% under load tests simulating 1,000+ concurrent users by profiling asynchronous FastAPI endpoints and MySQL queries for a real-estate investment platform.
+
+  \item Built from scratch a full-stack real estate trading Web3 app using React, FastAPI, and MySQL, supporting asset tokenization, KYC, portfolio, and live blockchain transactions; optimized APIs and database to reduce latency by 80\%.
+
+
 \end{itemize}
 \name{Ecesis Investment}\sep\textit{Frontend Developer Intern (Part-time, Remote)}\when{Jul 2023 -- Dec 2023}
 \begin{itemize}
-  \item Built an AI transcription application; cut streaming latency by 60\% through WebSocket optimization and rendering time by 80\% through caching and state management.
+
+  \item Built a cross-platform AI scribing mobile app in React Native with real-time audio transcription and LLM summarization; optimized WebSocket streaming and Redux caching, reducing transcription latency 60\% and UI rendering time 80\%.
+
 \end{itemize}
 
+
 \heading{EDUCATION}
-\name{Cornell University}\sep M.Eng., Computer Engineering\when{Aug 2022 -- Dec 2023}
-GPA: 3.95/4.00. Deep Learning (A+), Machine Learning (A), Computer Vision (A+), Distributed Computing Principles.\par
+\name{Cornell University}\sep M.Eng., Computer Engineering\sep GPA: 3.95/4.00\when{Aug 2022 -- Dec 2023}
 \vspace{3bp}
-\name{University of Liverpool}\sep B.Eng. (Honors), Electrical \& Electronic Engineering\when{Sep 2017 -- Jul 2021}
-GPA: 3.97/4.00. Power Systems (A+), Instrumentation/Control, Signals/Systems, Electromagnetism, Field Theory \& PDEs.
+\name{University of Liverpool}\sep B.Eng. (Honors), Electrical \& Electronic Engineering\sep GPA: 3.97/4.00\when{Sep 2017 -- Jul 2021}
+\vspace{3bp}
+Coursework: Deep Learning (A+), Machine Learning (A), Computer Vision (A+), Distributed Computing Principles.\par
+
 
 \heading{SELECTED PROJECTS}
 \name{Transformer \& Reinforcement Learning}\enspace\href{https://yimian.xyz/}{\underline{[Demo]}}\enspace Built a Transformer policy using supervised pretraining and PPO for predator--prey simulation; distilled the policy by 40\% for <10\,ms browser inference.\par
@@ -85,6 +99,6 @@ GPA: 3.97/4.00. Power Systems (A+), Instrumentation/Control, Signals/Systems, El
 \name{Distributed Systems}\enspace\href{https://github.com/yimianxyz/dslabs-public}{\underline{[Code]}}\enspace Implemented a sharded Java key/value store using Multi-Paxos and two-phase commit for strongly consistent cross-shard transactions.
 
 \heading{TECHNICAL SKILLS}
-\name{ML \& Research:} Python, PyTorch, TensorFlow/Keras, Chronos 2, temporal backtesting, time-series foundation models.\par
-\name{Systems \& Data:} SQL/BigQuery, GCP, FastAPI, Airflow, Java, React/TypeScript, distributed systems, CI/CD.
+\name{AI \& Machine Learning:} Python, PyTorch, LLM Evaluation, Agentic AI, RAG, MCP, SFT, RL, Speech-to-Text (STT), SQL\par
+\name{Systems \& Engineering:} TypeScript, React, FastAPI, REST APIs, MySQL, OAuth, RBAC, GCP, AWS, K8s, Docker, CI/CD, Git\par
 \end{document}
