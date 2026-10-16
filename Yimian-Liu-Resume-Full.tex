@@ -1,0 +1,104 @@
+% Build: SOURCE_DATE_EPOCH=0 tectonic -X compile Yimian-Liu-Resume-Full.tex --synctex
+\documentclass{article}
+\usepackage[margin=0.5in]{geometry}
+\usepackage[T1]{fontenc}
+\renewcommand{\familydefault}{Carlito-LF}
+% No ligatures or kerns after f; microtype's \DisableLigatures[f] is pdfTeX-only
+\XeTeXinterchartokenstate=1
+\newXeTeXintercharclass\fclass
+\XeTeXcharclass`f=\fclass
+\XeTeXinterchartoks\fclass 0={\kern0pt}
+\XeTeXinterchartoks\fclass\fclass={\kern0pt}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\definecolor{ink}{HTML}{161616}
+\definecolor{navy}{HTML}{152D3D}
+\definecolor{muted}{HTML}{434B52}
+\definecolor{link}{HTML}{315F78}
+\definecolor{rule}{HTML}{9DAEBB}
+\hypersetup{
+  colorlinks,
+  urlcolor=link,
+  pdfauthor={Yimian Liu},
+  pdftitle={Yimian Liu | AI Engineering},
+}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\raggedright
+\setlist{nosep, leftmargin=11bp, labelsep=4bp, topsep=2bp, itemsep=4bp, after=\endgraf\addvspace{4bp}}
+
+\newcommand{\sep}{\enspace|\enspace}
+\newcommand{\name}[1]{{\color{navy}\bfseries#1}}
+\newcommand{\when}[1]{\hfill{\color{muted}#1\par}}
+\newcommand{\heading}[1]{\addvspace{5.7bp}\name{#1}\par
+  \vspace{2bp}{\color{rule}\hrule}\vspace{4bp}}
+
+\begin{document}
+\fontsize{11bp}{13.3bp}\selectfont\color{ink}
+
+{\centering
+\name{\fontsize{20bp}{24bp}\selectfont YIMIAN LIU}\par
+{\fontsize{10.5bp}{14bp}\selectfont\color{muted}Software Engineer | Agentic AI \& Machine Learning\par}
+\vspace{2bp}
+\href{mailto:i@yimian.xyz}{i@yimian.xyz}\sep 607-391-5915\sep\href{https://yimian.xyz/}{yimian.xyz}\par}
+
+\heading{EXPERIENCE}
+\name{\fontsize{11.5bp}{13.3bp}\selectfont Guzman Energy}\when{Denver, CO}
+\textit{Operations Research Engineer (AI \& Platform Tech Lead)}\when{Jan 2026 -- Present}
+\begin{itemize}
+  \item Led a three-person AI-native team build Guzman's core internal trading, AI, and data platform from scratch in under two years: 32 production apps, 71\% of employees active weekly, \$2M daily trading volume, and 3M+ system events/day.  
+  
+  \item Built an agentic auto-research system for load/generation forecasting; agents generated hypotheses, ran reproducible backtests, shared experiments/evidence across agents to guide new research, published immutable model artifacts; LLM judge filtered leaky runs and promoted candidates by realized performance, reducing MAE by 17\% vs best vendor.
+
+  \item Built and owned a fully-automated production SPP trading system that integrates forecasts with trader-in-the-loop formula-based strategy design; engineered reliability with preflight checks, state-drift detection, cross-region retries, and agentic anomaly detection, achieving 100\% on-time submissions for 6+ months while submitting \$1.1M+ daily.
+
+  \item Proposed and led the adoption of Claude as the company's self-serve analysis and automation layer, growing weekly active usage from 0-82\% of employees; led delivery of a unified MCP connector exposing internal/external data and APIs that make Claude really useful, with role-based access control and audit logging for data governance.
+  
+  \item Grew MCP events 2.8x MoM for four months by using AI agents to identify user pain points from audit logs, rapidly resolving user blockers, leading cross-department onboarding, and hosting biweekly company-wide AI Office Hours.
+
+  \item Initiated and led delivery of multiple AI agentic systems, notably: a security scanner that found 6 critical vulnerabilities, including one in a third-party vendor system; a data anomaly and human-error detection system that helped traders proactively avoid \$20K+ in losses; an RFP finder that helped Commercial surface a real opportunity in its first month.
+  
+  \item Empowered all three team members to achieve 6x traditional engineering productivity by building an AI-native, self-driven, research-to-production culture: encouraging end-to-end ownership, close end-user engagement, engineer-led innovation; hosting weekly AI research seminars; and automating code review, testing, and CI/CD.
+
+\end{itemize}
+\textit{Software Engineer}\when{Oct 2024 -- Dec 2025}
+\begin{itemize}
+  \item Architected and built the platform foundation from scratch using Python/GCP, React/TypeScript, and BigQuery; team-owned data pipelines span 3.5B+ production rows; delivering core apps including trading submissions, AI data marketplace, position, settlement \& risk management, resource planning map, ticket \& notification system.
+
+\end{itemize}
+\name{Elseware Capital}\sep\textit{Full Stack Developer (Remote)}\when{Jan 2024 -- Sep 2024}
+\begin{itemize}
+
+  \item Built from scratch a full-stack real estate trading Web3 app using React, FastAPI, and MySQL, supporting asset tokenization, KYC, portfolio, and live blockchain transactions; optimized APIs and database to reduce latency by 80\%.
+
+
+\end{itemize}
+\name{Ecesis Investment}\sep\textit{Frontend Developer Intern (Part-time, Remote)}\when{Jul 2023 -- Dec 2023}
+\begin{itemize}
+
+  \item Built a cross-platform AI scribing mobile app in React Native with real-time audio transcription and LLM summarization; optimized WebSocket streaming and Redux caching, reducing transcription latency 60\% and UI rendering time 80\%.
+
+\end{itemize}
+
+
+\heading{EDUCATION}
+\name{Cornell University}\sep M.Eng., Computer Engineering\sep GPA: 3.95/4.00\when{Aug 2022 -- Dec 2023}
+\vspace{3bp}
+\name{University of Liverpool}\sep B.Eng. (Honors), Electrical \& Electronic Engineering\sep GPA: 3.97/4.00\when{Sep 2017 -- Jul 2021}
+\vspace{3bp}
+Coursework: Deep Learning (A+), Machine Learning (A), Computer Vision (A+), Distributed Computing Principles.\par
+
+
+\heading{SELECTED PROJECTS}
+\name{Transformer \& Reinforcement Learning}\enspace\href{https://yimian.xyz/}{\underline{[Demo]}}\enspace Built a Transformer policy using supervised pretraining and PPO for predator--prey simulation; distilled the policy by 40\% for <10\,ms browser inference.\par
+\vspace{3bp}
+\name{Distributed Systems}\enspace\href{https://github.com/yimianxyz/dslabs-public}{\underline{[Code]}}\enspace Implemented a sharded Java key/value store using Multi-Paxos and two-phase commit for strongly consistent cross-shard transactions.
+
+\heading{TECHNICAL SKILLS}
+\name{AI \& Machine Learning:} Python, PyTorch, Time-Series Forecasting, Model/LLM Evaluation, RAG, MCP, SFT, RL, STT, SQL\par
+\name{Systems \& Engineering:} TypeScript, React, FastAPI, REST APIs, MySQL, OAuth, RBAC, GCP, AWS, K8s, Docker, CI/CD, Git\par
+\end{document}
