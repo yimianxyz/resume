@@ -1,104 +1,108 @@
-% Build: SOURCE_DATE_EPOCH=0 tectonic -X compile Yimian-Liu-Resume.tex --synctex
+% Build: SOURCE_DATE_EPOCH=0 tectonic -X compile Yimian-Liu-Resume-Full.tex --synctex
 \documentclass{article}
-\usepackage[margin=0.5in]{geometry}
-\usepackage[T1]{fontenc}
-\renewcommand{\familydefault}{Carlito-LF}
-% No ligatures or kerns after f; microtype's \DisableLigatures[f] is pdfTeX-only
-\XeTeXinterchartokenstate=1
-\newXeTeXintercharclass\fclass
-\XeTeXcharclass`f=\fclass
-\XeTeXinterchartoks\fclass 0={\kern0pt}
-\XeTeXinterchartoks\fclass\fclass={\kern0pt}
-\usepackage{microtype}
+\usepackage[paperwidth=612bp,paperheight=792bp,left=37.5bp,right=37.5bp,top=41.25bp,bottom=30bp]{geometry}
+\usepackage{fontspec}
 \usepackage{enumitem}
 \usepackage{xcolor}
 \usepackage{hyperref}
 
-\definecolor{ink}{HTML}{161616}
-\definecolor{navy}{HTML}{152D3D}
-\definecolor{muted}{HTML}{434B52}
-\definecolor{link}{HTML}{315F78}
-\definecolor{rule}{HTML}{9DAEBB}
+% Type, colours and spacing follow C1_Agent_Product_Engineer_LaTeX, set in normal flow
+\setmainfont{Inter-Regular.otf}[Path=fonts/,BoldFont=Inter-Bold.otf]
+\newfontface\fontName{Inter-Bold.otf}[Path=fonts/,LetterSpace=-1]
+\newfontface\fontHeading{Inter-Bold.otf}[Path=fonts/,LetterSpace=12]
+\newfontface\fontSemiBold{Inter-SemiBold.otf}[Path=fonts/]
+\newfontface\fontMedium{Inter-Medium.otf}[Path=fonts/]
+
+\definecolor{ink}{HTML}{141414}
+\definecolor{navy}{HTML}{1F3A5F}
+\definecolor{gray}{HTML}{5A5A5A}
+\definecolor{rule}{HTML}{C9C9C9}
 \hypersetup{
-  colorlinks,
-  urlcolor=link,
+  hidelinks,
   pdfauthor={Yimian Liu},
   pdftitle={Yimian Liu | AI Engineering},
 }
 
 \pagestyle{empty}
+\frenchspacing
 \setlength{\parindent}{0pt}
+\setlength{\topskip}{19.5bp}
 \raggedright
-\setlist{nosep, leftmargin=11bp, labelsep=4bp, topsep=2bp, itemsep=4bp, after=\endgraf\addvspace{4bp}}
+\hyphenpenalty=10000
+% Shape whole lines, spaces included: Inter's calt and kerning see across them
+\XeTeXinterwordspaceshaping=2
 
-\newcommand{\sep}{\enspace|\enspace}
-\newcommand{\name}[1]{{\color{navy}\bfseries#1}}
-\newcommand{\when}[1]{\hfill{\color{muted}#1\par}}
-\newcommand{\heading}[1]{\addvspace{5.7bp}\name{#1}\par
-  \vspace{2bp}{\color{rule}\hrule}\vspace{4bp}}
+\newcommand{\dotmark}{\special{pdf:content .3529 g 1.5 3 m 1.5 3.8284 .8284 4.5 0 4.5 c -.8284 4.5 -1.5 3.8284 -1.5 3 c -1.5 2.1716 -.8284 1.5 0 1.5 c .8284 1.5 1.5 2.1716 1.5 3 c f}}
+\setlist[itemize]{label=\dotmark, nosep, align=left, leftmargin=10.5bp, labelwidth=0pt, labelsep=10.5bp, topsep=1.09bp, itemsep=1.09bp, after=\endgraf\addvspace{2.59bp}}
+
+\newcommand{\gap}{\vspace{1.09bp}}
+\newcommand{\name}[1]{{\bfseries#1}}
+\newcommand{\skill}[1]{{\fontSemiBold#1}}
+\newcommand{\role}[1]{{\fontMedium\color{gray}#1}}
+\newcommand{\sep}{ \role{—} }
+\newcommand{\when}[1]{\hfill{\fontsize{8.595bp}{12.09bp}\selectfont\color{gray}#1}\par}
+% #1: baseline to rule, #3: \prevdepth that sets the distance to the next baseline
+\newcommand{\rulebelow}[3]{\vskip\dimexpr#1-\prevdepth\relax{\color{#2}\hrule height .75bp}\prevdepth=#3\relax}
+\newcommand{\heading}[1]{%
+  \par\addvspace{4.84bp}%
+  {\fontHeading\fontsize{8.1975bp}{12.09bp}\selectfont\color{navy}#1\par}%
+  \rulebelow{3.75bp}{rule}{.09bp}%
+}
 
 \begin{document}
-\fontsize{11bp}{13.3bp}\selectfont\color{ink}
+\fontsize{9.3bp}{12.09bp}\selectfont\color{ink}
 
-{\centering
-\name{\fontsize{20bp}{24bp}\selectfont YIMIAN LIU}\par
-{\fontsize{10.5bp}{14bp}\selectfont\color{muted}Software Engineer | Agentic AI \& Machine Learning\par}
-\vspace{2bp}
-\href{mailto:i@yimian.xyz}{i@yimian.xyz}\sep 607-391-5915\sep\href{https://yimian.xyz/}{yimian.xyz}\par}
+{\fontName\fontsize{19.5bp}{15bp}\selectfont YIMIAN LIU\par}
+{\fontSemiBold\fontsize{9.9bp}{15bp}\selectfont\color{navy}Software Engineer | Agentic AI \& Machine Learning | Cornell GPA: 3.95\hfill
+  \smash{\parbox[b]{200bp}{\normalfont\fontsize{8.295bp}{11.25bp}\selectfont\color{gray}\raggedleft
+Open to relocation · H-1B transfer eligible\\\href{mailto:i@yimian.xyz}{i@yimian.xyz} · (607) 391-5915\\\href{https://yimian.xyz/}{https://yimian.xyz}}}\par}
+\rulebelow{6.75bp}{ink}{2.68bp}
+
+\heading{SUMMARY}
+Full-stack engineer (TypeScript/React + Python) who has shipped two production AI agent systems --- one submitting \$1.1M in daily energy-market bids, one used daily by 82\% of employees --- and owns the quality loop end to end: harness design, evals as release gates, failure analysis from production logs, and cost/latency budgets. Builds with coding agents daily (Claude Code, Cursor) and ships to production in the first week of a new codebase.\par
 
 \heading{EXPERIENCE}
-\name{\fontsize{11.5bp}{13.3bp}\selectfont Guzman Energy}\when{Denver, CO}
-\textit{Operations Research Engineer (AI \& Platform Tech Lead)}\when{Jan 2026 -- Present}
+\name{Guzman Energy}\sep\role{Senior Software Engineer (Internal title: ORA)}\when{Denver, CO · Jan 2026 -- Present}
 \begin{itemize}
-  \item Led a three-person AI-native team build Guzman's core internal trading, AI, and data platform from scratch in under 2 years: 32 production apps, 71\% of employees active weekly, \$2M daily trading volume, and 3M+ system events/day.  
-  
-  \item Built an agentic auto-research system for load/generation forecasting; agents generated hypotheses, ran reproducible backtests, shared experiments/evidence across agents to guide new research, published immutable model artifacts; LLM judge filtered leaky runs and promoted candidates by realized performance, reducing MAE by 17\% vs best vendor.
+  \item Built and owned an agentic trading system that submits \$1.1M bids per day to the SPP market: real-time data ingestion, agentic generation of ML forecast models, trader-in-the-loop UI/UX, LLM-as-a-Judge evals, and human/market feedback—delivering +\$842K in incremental P\&L and 99.99\% on-time acceptance over 7 months.
 
-  \item Built and owned a fully-automated production SPP trading system that integrates forecasts with trader-in-the-loop formula-based strategy design; engineered reliability with preflight checks, state-drift detection, cross-region retries, and agentic anomaly detection, achieving 100\% on-time submissions for 6+ months while submitting \$1.1M+ daily.
+  \item Owned the company's self-serve AI analysis and automation layer: a unified MCP server connecting 55 data sources and serving 130K tool calls/month, with fine-grained access control, OAuth2, and audit logging; hosted company-wide AI office hours, and grew daily active users from 0 to 82\% of employees.
 
-  \item Proposed and led the adoption of Claude as the company's self-serve analysis and automation layer, growing weekly active usage from 0-82\% of employees; led delivery of a unified MCP connector exposing internal/external data and APIs that make Claude really useful, with role-based access control and audit logging for data governance.
-  
-  \item Grew MCP events 2.8x MoM for four months by using AI agents to identify user pain points from audit logs, rapidly resolving user blockers, leading cross-department onboarding, and hosting biweekly company-wide AI Office Hours.
+  \item Built the eval suites that gate every MCP deploy: 54 regression and 76 capability tasks drawn from real user questions and incidents, with 494 answer checks and an LLM-as-a-Judge scoring each trajectory; hill climbed the capability pass rate from 36\% to 87\% in 4 months by filling data gaps, tuning context and prompts, and curating tools, while cutting cost per task 68\%.
 
-  \item Initiated and led delivery of multiple AI agentic systems, notably: a security scanner that found 6 critical vulnerabilities, including one in a third-party vendor system; a data anomaly and human-error detection system that helped traders proactively avoid \$20K+ in losses; an RFP finder that helped Commercial surface a real opportunity in its first month.
-  
-  \item Empowered all three team members to achieve 6x traditional engineering productivity by building an AI-native, self-driven, research-to-production culture: encouraging end-to-end ownership, close end-user engagement, engineer-led innovation; hosting weekly AI research seminars; and automating code review, testing, and CI/CD.
+  \item Built an agentic auto-research framework for load/generation forecast: agents propose hypotheses, run experiments, contribute findings and facts to a shared knowledge graph, and publish immutable ML model artifacts; an LLM judge rejects leaky runs via trajectory check, and production gating based on realized performance --- MAE 17\% below the best vendor.
 
+  \item Led two other engineers achieving 6x conventional engineering productivity by building an AI-native, self-driven, research-to-production culture: encouraging end-to-end ownership, close end-user engagement, engineer-led innovation; hosting weekly AI research seminars; and automating code review, testing, and CI/CD.
 \end{itemize}
-\textit{Software Engineer}\when{Oct 2024 -- Dec 2025}
+\role{Software Engineer}\when{Oct 2024 -- Dec 2025}
 \begin{itemize}
-  \item Architected and built the platform foundation from scratch using Python/GCP, React/TypeScript, and BigQuery; team-owned data pipelines span 3.5B+ production rows; delivering core apps including trading submissions, AI data marketplace, position, settlement \& risk management, resource planning map, ticket \& notification system.
+  \item Architected and built from scratch Guzman's internal AI and data platform (Python on GCP, React/TypeScript, BigQuery), using Cursor and Claude Code intensively: built 16 productions apps in 15 months covering trading, operations, accounting, and commercial; owned 3.5B+ rows BigQuery data; used daily by 74+ employees.
 
+  \item Built a production RAG system as the company's knowledge base, combining hybrid (BM25 + vector) retrieval, metadata-aware filtering, cross-encoder reranking, and citation-grounded generation; improved Recall@10 from 0.35 to 0.96 and MRR@10 from 0.25 to 0.78.
 \end{itemize}
-\name{Elseware Capital}\sep\textit{Full Stack Developer (Remote)}\when{Jan 2024 -- Sep 2024}
+\name{Elseware Capital}\sep\role{Full Stack Developer (Remote)}\when{Jan 2024 -- Sep 2024}
 \begin{itemize}
-
-  \item Built from scratch a full-stack real estate trading Web3 app using React, FastAPI, and MySQL, supporting asset tokenization, KYC, portfolio, and live blockchain transactions; optimized APIs and database to reduce latency by 80\%.
-
-
+  \item Built from scratch a full-stack real estate trading web app with React, FastAPI, and MySQL, supporting asset tokenization, KYC, portfolio, and live blockchain transactions; as the sole engineer on the team, built 95\% of the codebase with Claude 3.5 via self-built scaffolds for progressive LLM context management.
 \end{itemize}
-\name{Ecesis Investment}\sep\textit{Frontend Developer Intern (Part-time, Remote)}\when{Jul 2023 -- Dec 2023}
+\name{Guzman Energy}\sep\role{Frontend Developer Intern (Part-time, Remote)}\when{Jul 2023 -- Dec 2023}
 \begin{itemize}
-
-  \item Built a cross-platform AI scribing mobile app in React Native with real-time audio transcription and LLM summarization; optimized WebSocket streaming and Redux caching, reducing transcription latency 60\% and UI rendering time 80\%.
-
+  \item Built a cross-platform AI scribing mobile app in React Native, using OpenAI Whisper for real-time audio transcription and GPT-3.5 for LLM summarization, optimized WebSocket streaming and Redux caching, cutting transcription latency by 60\% and UI render time by 80\%.
 \end{itemize}
-
-
-\heading{EDUCATION}
-\name{Cornell University}\sep M.Eng., Computer Engineering\sep GPA: 3.95/4.00\when{Aug 2022 -- Dec 2023}
-\vspace{3bp}
-\name{University of Liverpool}\sep B.Eng. (Honors), Electrical \& Electronic Engineering\sep GPA: 3.97/4.00\when{Sep 2017 -- Jul 2021}
-\vspace{3bp}
-Coursework: Deep Learning (A+), Machine Learning (A), Computer Vision (A+), Distributed Computing Principles.\par
-
 
 \heading{SELECTED PROJECTS}
-\name{Transformer \& Reinforcement Learning}\enspace\href{https://yimian.xyz/}{\underline{[Demo]}}\enspace Built a Transformer policy using supervised pretraining and PPO for predator--prey simulation; distilled the policy by 40\% for <10\,ms browser inference.\par
-\vspace{3bp}
-\name{Distributed Systems}\enspace\href{https://github.com/yimianxyz/dslabs-public}{\underline{[Code]}}\enspace Implemented a sharded Java key/value store using Multi-Paxos and two-phase commit for strongly consistent cross-shard transactions.
+\begin{itemize}
+  \item \name{Transformer \& Reinforcement Learning}\enspace\href{https://yimian.xyz/}{\underline{[Demo]}}\enspace Built a Transformer policy using supervised pretraining and PPO for predator--prey simulation; distilled the policy by 40\% for <10ms browser inference.
+
+  \item \name{Distributed Systems}\enspace\href{https://github.com/yimianxyz/dslabs-public}{\underline{[Code]}}\enspace Implemented a sharded Java key/value store using Multi-Paxos and two-phase commit for strongly consistent cross-shard transactions.
+\end{itemize}
 
 \heading{TECHNICAL SKILLS}
-\name{AI \& Machine Learning:} Python, PyTorch, Time-Series Forecasting, Model/LLM Evaluation, RAG, MCP, SFT, RL, STT, SQL\par
-\name{Systems \& Engineering:} TypeScript, React, FastAPI, REST APIs, MySQL, OAuth, RBAC, GCP, AWS, K8s, Docker, CI/CD, Git\par
+\skill{Tools \& Languages:} Claude Code, Python, TypeScript, React, Node.js, SQL, REST, OAuth, RBAC, OTel, GCP, AWS, K8s\par
+\gap
+\skill{LLM Systems:} Claude/OpenAI APIs, tool \& MCP, RAG, evals, context management, sandboxed execution, LoRA fine-tuning\par
+
+\heading{EDUCATION}
+\name{Cornell University}\sep\role{M.Eng., Computer Engineering · GPA: 3.95/4.00}\when{Aug 2022 -- Dec 2023}
+\gap
+\name{University of Liverpool}\sep\role{B.Eng. (Honors), Electrical \& Electronic Engineering · GPA: 3.97/4.00}\when{Sep 2017 -- Jul 2021}
 \end{document}
