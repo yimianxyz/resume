@@ -37,6 +37,7 @@
 
 \newcommand{\gap}{\vspace{1.09bp}}
 \newcommand{\name}[1]{{\bfseries#1}}
+\newcommand{\lead}[1]{{\fontSemiBold#1}\enspace}
 \newcommand{\skill}[1]{{\fontSemiBold#1}}
 \newcommand{\role}[1]{{\fontMedium\color{gray}#1}}
 \newcommand{\sep}{ \role{—} }
@@ -53,53 +54,62 @@
 \fontsize{9.3bp}{12.09bp}\selectfont\color{ink}
 
 {\fontName\fontsize{19.5bp}{15bp}\selectfont YIMIAN LIU\par}
-{\fontSemiBold\fontsize{9.9bp}{15bp}\selectfont\color{navy}Software Engineer | Agentic AI \& Machine Learning | Cornell GPA: 3.95\hfill
+{\fontSemiBold\fontsize{9.9bp}{15bp}\selectfont\color{navy}Software Engineer | Agentic AI \& ML | Cornell GPA: 3.95\hfill
   \smash{\parbox[b]{200bp}{\normalfont\fontsize{8.295bp}{11.25bp}\selectfont\color{gray}\raggedleft
 Open to relocation · H-1B transfer eligible\\\href{mailto:i@yimian.xyz}{i@yimian.xyz} · (607) 391-5915\\\href{https://yimian.xyz/}{https://yimian.xyz}}}\par}
 \rulebelow{6.75bp}{ink}{2.68bp}
 
 \heading{SUMMARY}
-Full-stack engineer (TypeScript/React + Python) who has shipped two production AI agent systems --- one submitting \$1.1M in daily energy-market bids, one used daily by 82\% of employees --- and owns the quality loop end to end: harness design, evals as release gates, failure analysis from production logs, and cost/latency budgets. Builds with coding agents daily (Claude Code, Cursor) and ships to production in the first week of a new codebase.\par
+Senior software engineer with 3+ years building full-stack AI products (Python, TypeScript/React). Shipped two production AI agent systems: one automating \$1.1M in daily energy-market bids (+\$842K P\&L), one used daily by 82\% of employees. Owns products end to end, from user needs through design, evals, launch, and on-call reliability. Builds with AI coding tools (Claude Code, Cursor) daily and ships to production in the first week of a new codebase.\par
 
 \heading{EXPERIENCE}
 \name{Guzman Energy}\sep\role{Senior Software Engineer (Internal title: ORA)}\when{Denver, CO · Jan 2026 -- Present}
 \begin{itemize}
-  \item Built and owned an agentic trading system that submits \$1.1M bids per day to the SPP market: real-time data ingestion, agentic generation of ML forecast models, trader-in-the-loop UI/UX, LLM-as-a-Judge evals, and human/market feedback — delivering +\$842K in incremental P\&L and 99.99\% on-time acceptance over 7 months.
+  \item \lead{AI trading system:} Built and owned an AI agent system that places \$1.1M in bids per day in the SPP wholesale power market, adding \$842K in profit with 99.99\% on-time acceptance over 7 months. Covers real-time data ingestion, agent-built ML forecast models, a review UI for traders, and automated quality checks (LLM-as-a-Judge evals).
 
-  \item Owned the company's self-serve AI analysis and automation layer: a unified MCP server connecting 55 data sources and serving 130K tool calls/month, with fine-grained access control, OAuth2, and audit logging; hosted company-wide AI office hours, and grew daily active users from 0 to 82\% of employees.
+  \item \lead{Company-wide AI adoption:} Grew daily AI use from 0 to 82\% of employees by building the company's self-serve AI analysis layer and hosting AI office hours: one secure gateway (MCP server) connecting 55 data sources and serving 130K tool calls/month, with fine-grained access control, OAuth2, and audit logging.
 
-  \item Built the eval suites that gate every MCP deploy: 54 regression and 76 capability tasks drawn from real user questions and incidents, with 494 answer checks and an LLM-as-a-Judge scoring each trajectory; hill-climbed the capability pass rate from 36\% to 87\% in 4 months by filling data gaps, tuning context and prompts, and curating tools, while cutting cost per task by 68\%.
+  \item \lead{AI quality and cost:} Raised the AI's pass rate on hard real-world tasks from 36\% to 87\% in 4 months while cutting cost per task by 68\%, by tuning context, prompts, and tools. Built the automated test suites (evals) that gate every release: 130 tasks drawn from real user questions and incidents, with answer checks and LLM scoring each trajectory.
 
-  \item Built an agentic auto-research framework for load/generation forecast: agents propose hypotheses, run experiments, accumulate findings and facts into a shared knowledge graph, and publish ML models as immutable Docker images; an LLM judge rejects leaky runs via trajectory checks, while production output is gated on realized performance with rollback --- MAE 17\% below the best vendor.
+  \item \lead{Agentic ML research:} Beat the best vendor's forecast error (MAE) by 17\% on power load and generation with a self-built framework of AI research agents that propose hypotheses, run experiments, share findings in a knowledge graph, and publish ML models as immutable Docker images; models go live only on proven results, with rollback.
 
-  \item Led and mentored two other engineers to achieve 6x conventional engineering productivity by building an AI-native, self-driven, research-to-production culture: encouraging end-to-end ownership, close end-user engagement, engineer-led innovation; hosting weekly AI research seminars; and automating code review, testing, and CI/CD.
+  \item \lead{Reliability:} Owned on-call, monitoring, alerting, and retries for the \$1.1M/day trading automation; kept every bid on time with zero loss and resolved 8 incidents in under 30 minutes on average, using AI agents to trace root causes in logs.
+
+  \item \lead{Leadership:} Led and mentored 2 engineers to 6x conventional engineering productivity by fostering AI-native culture: end-to-end ownership, close work with end users, weekly AI research seminars, and automated code review and CI/CD.
+
 \end{itemize}
 \role{Software Engineer}\when{Oct 2024 -- Dec 2025}
 \begin{itemize}
-  \item Architected and built from scratch Guzman's internal AI and data platform (Python on GCP, React/TypeScript, BigQuery, SSO), using Cursor and Claude Code intensively: built 16 production apps in 15 months covering trading, operations, accounting, and commercial; owned 3.5B+ rows of BigQuery data; used daily by 74+ employees.
+  \item \lead{Internal platform:} Designed and built Guzman's internal AI and data platform from scratch (Python on GCP, React/TypeScript, BigQuery, SSO): 16 production apps in 15 months for trading, operations, accounting, and commercial teams, used daily by 74+ employees and backed by 3.5B+ rows of data; built with Cursor and Claude Code.
 
-  \item Built a production RAG system as the company's knowledge base, combining hybrid (BM25 + vector) retrieval, metadata-aware filtering, cross-encoder reranking, and citation-grounded generation; improved Recall@10 from 0.35 to 0.96 and MRR@10 from 0.25 to 0.78.
+  \item \lead{Retrieval system:} Built the company's RAG knowledge base with hybrid BM25 + vector retrieval, metadata filtering, cross-encoder reranking, and cited answers; raised Recall@10 from 0.35 to 0.96 and MRR@10 from 0.25 to 0.78.
+
 \end{itemize}
 \name{Elseware Capital}\sep\role{Founding Full-Stack Engineer (Remote)}\when{Jan 2024 -- Sep 2024}
 \begin{itemize}
-  \item Built from scratch a full-stack real estate trading web app with React, FastAPI, and MySQL, supporting asset tokenization, KYC, portfolio, and live blockchain transactions; as the sole engineer on the team, built 95\% of the codebase with Claude 3.5 via self-built scaffolds for progressive LLM context management.
+  \item As the sole engineer, built a real estate trading web app from scratch (React, FastAPI, MySQL) with asset tokenization, identity verification (KYC), and live blockchain transactions; wrote 95\% of the code with Claude 3.5 via self-built scaffolds for progressive LLM context management, before coding agents like Claude Code existed.
+
 \end{itemize}
 \name{Guzman Energy}\sep\role{Frontend Developer (Remote)}\when{Jul 2023 -- Dec 2023}
 \begin{itemize}
-  \item Built a cross-platform AI scribing mobile app in React Native, using OpenAI Whisper for real-time audio transcription and GPT-3.5 for LLM summarization; optimized WebSocket streaming and Redux caching, cutting transcription latency by 60\% and UI render time by 80\%.
+  \item Built from scratch an AI note-taking app in React Native with OpenAI Whisper real-time transcription and GPT-3.5 summaries; cut transcription latency by 60\% and UI render time by 80\% via WebSocket streaming and Redux caching.
+
 \end{itemize}
 
 \heading{SELECTED PROJECTS}
 \begin{itemize}
-  \item \name{Machine Learning}\enspace\href{https://yimian.xyz/}{\underline{[Demo]}}\enspace Trained a Transformer model for predator–prey simulation using supervised pretraining and PPO fine-tuning; distilled the model size by 40\% for <10ms in-browser inference.
+  \item \name{Machine Learning}\enspace\href{https://yimian.xyz/}{\underline{[Demo]}}\enspace Trained a Transformer model for a predator–prey simulation (supervised pretraining, then PPO reinforcement learning); distilled it 40\% smaller for <10ms in-browser inference.
 
-  \item \name{Self-Hosted LLM}\enspace\href{https://github.com/yimianxyz/llm-host}{\underline{[Code]}}\enspace Deployed GLM-5.3 (753B MoE) on 4× H200 GPUs with W4A8 quantization; tuned parallelism (TP4, EP), prefix caching, and MTP speculative decoding, achieving 387 tok/s at \$0.11/1M tokens (69\% below API price).
+  \item \name{Self-Hosted LLM}\enspace\href{https://github.com/yimianxyz/llm-host}{\underline{[Code]}}\enspace Ran GLM-5.3 (753B MoE) on 4× H200 GPUs at 69\% below API price (\$0.11 per 1M tokens, 387 tokens/s) using quantization, GPU parallelism, prefix caching, and speculative decoding.
+
+  \item \name{Distributed Database}\enspace\href{https://github.com/yimianxyz/dslabs-public}{\underline{[Code]}}\enspace Built a fault-tolerant, sharded key-value database in Java: Multi-Paxos keeps data consistent through server failures, and two-phase commit makes cross-shard transactions atomic.
+
 \end{itemize}
 
 \heading{TECHNICAL SKILLS}
-\skill{Tools \& Languages:} Claude Code, Python, TypeScript, React, Node.js, SQL, REST, OAuth, RBAC, OTel, GCP, AWS, K8s\par
+\skill{Languages \& Tools:} Python, TypeScript, React, Node.js, SQL, REST, GCP, AWS, Kubernetes, OpenTelemetry, OAuth, RBAC\par
 \gap
-\skill{LLM Systems:} Claude/OpenAI APIs, tool \& MCP, RAG, evals, context management, sandboxed execution, LoRA fine-tuning\par
+\skill{LLM Systems:} Claude/OpenAI APIs, Claude Code, MCP, RAG, evals, context management, sandboxing, LoRA fine-tuning\par
 
 \heading{EDUCATION}
 \name{Cornell University}\sep\role{M.Eng., Computer Engineering · GPA: 3.95/4.00}\when{Aug 2022 -- Dec 2023}
