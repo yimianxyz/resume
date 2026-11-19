@@ -9,7 +9,6 @@
 % Type, colours and spacing follow C1_Agent_Product_Engineer_LaTeX, set in normal flow
 \setmainfont{Inter-Regular.otf}[Path=fonts/,BoldFont=Inter-Bold.otf]
 \newfontface\fontName{Inter-Bold.otf}[Path=fonts/,LetterSpace=-1]
-\newfontface\fontHeading{Inter-Bold.otf}[Path=fonts/,LetterSpace=12]
 \newfontface\fontSemiBold{Inter-SemiBold.otf}[Path=fonts/]
 \newfontface\fontMedium{Inter-Medium.otf}[Path=fonts/]
 
@@ -31,6 +30,8 @@
 \hyphenpenalty=10000
 % Shape whole lines, spaces included: Inter's calt and kerning see across them
 \XeTeXinterwordspaceshaping=2
+% Spaces after capitals are shaped too (TeX's sfcode 999 leaves them out): the PDF text reads "AI agent", not "AIagent"
+\count255=`\A \loop\sfcode\count255=1000 \ifnum\count255<`\Z \advance\count255 1 \repeat
 
 \newcommand{\dotmark}{\special{pdf:content .3529 g 1.5 3 m 1.5 3.8284 .8284 4.5 0 4.5 c -.8284 4.5 -1.5 3.8284 -1.5 3 c -1.5 2.1716 -.8284 1.5 0 1.5 c .8284 1.5 1.5 2.1716 1.5 3 c f}}
 \setlist[itemize]{label=\dotmark, nosep, align=left, leftmargin=10.5bp, labelwidth=0pt, labelsep=10.5bp, topsep=1.09bp, itemsep=1.09bp, after=\endgraf\addvspace{2.59bp}}
@@ -44,9 +45,10 @@
 \newcommand{\when}[1]{\hfill{\fontsize{8.595bp}{12.09bp}\selectfont\color{gray}#1}\par}
 % #1: baseline to rule, #3: \prevdepth that sets the distance to the next baseline
 \newcommand{\rulebelow}[3]{\vskip\dimexpr#1-\prevdepth\relax{\color{#2}\hrule height .75bp}\prevdepth=#3\relax}
+% No tracking on headings: letter-spaced caps reach resume parsers as "S U M M A R Y"
 \newcommand{\heading}[1]{%
   \par\addvspace{4.84bp}%
-  {\fontHeading\fontsize{8.1975bp}{12.09bp}\selectfont\color{navy}#1\par}%
+  {\bfseries\fontsize{8.1975bp}{12.09bp}\selectfont\color{navy}#1\par}%
   \rulebelow{3.75bp}{rule}{.09bp}%
 }
 
@@ -54,9 +56,16 @@
 \fontsize{9.3bp}{12.09bp}\selectfont\color{ink}
 
 {\fontName\fontsize{19.5bp}{15bp}\selectfont YIMIAN LIU\par}
+% Three-line contact block on the right. Its top line is level with the top of the name and its last line just under
+% the subtitle's baseline, so text extraction that sorts by position starts with the name. Such extraction may join the
+% top line to the name's line, so that line is the website; email and phone sit at the bottom, clear of it.
+% The email link's text is boxed: space shaping would otherwise stretch its rectangle over the rest of the line.
+% \char32 is a space set as a glyph: beside a box a plain space is a bare gap, too narrow for some extractors to see.
 {\fontSemiBold\fontsize{9.9bp}{15bp}\selectfont\color{navy}Software Engineer | Agentic AI \& ML | Cornell GPA: 3.95\hfill
-  \smash{\parbox[b]{200bp}{\normalfont\fontsize{8.295bp}{11.25bp}\selectfont\color{gray}\raggedleft
-Open to relocation · H-1B transfer eligible\\\href{mailto:i@yimian.xyz}{i@yimian.xyz} · (607) 391-5915\\\href{https://yimian.xyz/}{https://yimian.xyz}}}\par}
+  \raisebox{-.75bp}[0pt][0pt]{\parbox[b]{200bp}{\normalfont\fontsize{8.295bp}{12bp}\selectfont\color{gray}\raggedleft
+    \href{https://yimian.xyz/}{https://yimian.xyz}\\
+    Open to relocation · H-1B transfer eligible\\
+    \href{mailto:i@yimian.xyz}{\mbox{i@yimian.xyz}}\char32 · (607) 391-5915}}\par}
 \rulebelow{6.75bp}{ink}{2.68bp}
 
 \heading{SUMMARY}
@@ -98,7 +107,7 @@ Senior software engineer with 3+ years building full-stack AI products (Python, 
 
 \end{itemize}
 
-\heading{SELECTED PROJECTS}
+\heading{PROJECTS}
 \begin{itemize}
   \item \name{Machine Learning}\enspace\href{https://yimian.xyz/}{\underline{[Demo]}}\enspace Trained a Transformer model for a predator–prey simulation (supervised pretraining, then PPO reinforcement learning); distilled it 40\% smaller for <10ms in-browser inference.
 
